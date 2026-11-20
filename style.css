@@ -1,0 +1,503 @@
+/* Seleciona todo o Conteúdo */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style: none;
+}
+
+/* scrolla para a sessão devagar */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #f7f4ee;
+  font-family: Arial, sans-serif;
+}
+
+/* HEADER */
+header {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 3rem 5%;
+}
+
+/* NAV */
+nav {
+  visibility: hidden;
+  @media screen and (min-width: 860px) {
+    display: flex;
+    visibility: visible;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+}
+
+/* LOGO */
+.logoNome {
+  visibility: visible;
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+  font-family: arial;
+  letter-spacing: 0.2rem;
+  font-size: 1.7rem;
+  font-weight: normal;
+  color: #333;
+}
+
+.sobrenome {
+  font-style: italic;
+  font-family: cursive;
+  font-size: 1.7rem;
+  color: #a89f91;
+  letter-spacing: normal;
+}
+
+/* MENU */
+/* menu de navegação: sobre, serviços, experiencia, agendar horario */
+.navItens {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.navItens li:last-child a {
+  text-decoration: underline;
+}
+
+.itens {
+  color: #9b745f;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: color 0.3s ease;
+}
+
+.itens:hover {
+  color: #674c3e;
+  text-decoration: underline;
+}
+
+.logoNome a {
+  text-transform: none;
+  letter-spacing: normal;
+  text-decoration: none;
+}
+
+/* MENU CENTRAL (MAIN) */
+.section1 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  @media screen and (min-width: 860px) {
+    flex-direction: row; /* Força ficar lado a lado no desktop */
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 5vh;
+    padding: 0 3rem; /* Usei padding em vez de margin para não quebrar a largura */
+  }
+}
+
+.descricao {
+  text-transform: uppercase;
+  color: #9b745f;
+  display: flex;
+  align-items: center;
+  font-size: small;
+  margin-bottom: 10vh;
+}
+
+.descricao::before {
+  content: "";
+  width: 2rem;
+  height: 1px;
+  background: #000;
+  display: block;
+  margin-right: 10px;
+}
+
+.esquerdaSection1 {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 3rem;
+  @media screen and (min-width: 860px) {
+    max-width: 45%; /* No desktop, limita a largura do texto */
+  }
+}
+
+.frase {
+  display: flex;
+  flex-direction: column;
+  font-size: 5rem;
+  font-style: italic;
+  margin-bottom: 4vh;
+}
+
+.fraseEssencia {
+  color: #9b745f;
+  @media screen and (min-width: 860px) {
+    margin-left: 20%;
+  }
+}
+
+.fraseQuebra {
+  color: #6e625b;
+  margin-bottom: 5vh;
+  width: 80%;
+}
+
+.whatsapp {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  transition: transform 0.3s ease;
+  margin-left: 15%;
+  margin-bottom: 10vh;
+}
+
+.whatsapp:hover {
+  transform: scale(1.02);
+}
+
+.agendar {
+  color: #000;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+}
+
+.setaDireita {
+  color: #000;
+  border: 1px solid #000;
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+}
+
+/* CARROSSEL */
+.carrossel-container {
+  position: relative;
+  width: 100%; /* Adapta ao mobile */
+  max-width: 450px;
+  aspect-ratio: 4 / 5; /* Substitui a altura fixa para manter a proporção */
+  border-radius: 10%;
+  overflow: hidden;
+  margin-bottom: 10vh;
+  @media screen and (min-width: 860px) {
+    width: 45%; /* No desktop, divide o espaço com o texto da esquerda */
+  }
+}
+
+.cortes {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10%;
+  opacity: 0;
+  animation: fadeCarrossel 27s infinite;
+}
+
+.cortes.ativo {
+  opacity: 1;
+}
+
+.cortes:nth-child(1) {
+  animation-delay: 0s;
+}
+.cortes:nth-child(2) {
+  animation-delay: 3s;
+}
+.cortes:nth-child(3) {
+  animation-delay: 6s;
+}
+.cortes:nth-child(4) {
+  animation-delay: 9s;
+}
+.cortes:nth-child(5) {
+  animation-delay: 12s;
+}
+.cortes:nth-child(6) {
+  animation-delay: 15s;
+}
+.cortes:nth-child(7) {
+  animation-delay: 18s;
+}
+.cortes:nth-child(8) {
+  animation-delay: 21s;
+}
+.cortes:nth-child(9) {
+  animation-delay: 24s;
+}
+
+@keyframes fadeCarrossel {
+  0% {
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  33% {
+    opacity: 1;
+  }
+  43% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* Section2 */
+
+.section2 {
+  display: flex;
+  flex-direction: column;
+  background: #30241d;
+  position: relative;
+}
+
+.descricao2 {
+  text-transform: uppercase;
+  color: #9b745f;
+  display: flex;
+  align-items: center;
+  font-size: small;
+  padding-top: 10vh;
+  margin-left: 3rem;
+  width: 80%;
+}
+
+.descricao2::before {
+  content: "";
+  width: 2rem;
+  height: 1px;
+  background: #fff;
+  display: block;
+  margin-right: 10px;
+}
+
+.divSection2 {
+  margin: 0 3rem 0 3rem;
+  width: 90%;
+  font-style: italic;
+  font-family: Cochin;
+  padding-top: 10vh;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
+
+.h2Section2 {
+  color: #f7f4ee;
+  font-size: 4rem;
+  margin-left: 50%;
+  border-bottom: 1px solid gray;
+  padding-bottom: 5vh;
+}
+
+.spanH2 {
+  color: #9b745f;
+}
+
+.texto {
+  display: flex;
+  justify-content: space-between;
+  color: #c7bdb6;
+  margin: 0 3rem 0 3rem;
+  margin-left: 50%;
+  max-width: 43%;
+  margin-top: 5vh;
+  margin-bottom: 5vh;
+  font-size: small;
+  font-family: "Segoe UI";
+  font-style: italic;
+  gap: 1rem;
+  letter-spacing: 0.08rem;
+}
+
+.floating {
+  visibility: hidden;
+  @media screen and (min-width: 900px) {
+    visibility: visible;
+  }
+  position: absolute;
+  font-style: italic;
+  font-family: cursive;
+  transform: rotate(-45deg);
+  font-size: 2rem;
+  color: #f4efe8;
+  margin: 30% 3%;
+}
+
+/* Section 3 */
+
+.divSection3 {
+  background: #d8c1ad;
+  color: #30241d;
+  display: flex;
+  flex-direction: column;
+  @media screen and (min-width: 860px) {
+    flex-direction: initial;
+  }
+  justify-content: space-between;
+}
+
+.descricao3 {
+  text-transform: uppercase;
+  color: #6f4d3b;
+  display: flex;
+  align-items: center;
+  font-size: small;
+  width: 80%;
+  margin-bottom: 10vh;
+}
+
+.descricao3::before {
+  content: "";
+  width: 2rem;
+  height: 1px;
+  background: #000;
+  display: block;
+  margin-right: 10px;
+}
+
+.h2Section3 {
+  color: #30241d;
+  font-family: serif;
+  font-size: 4rem;
+  max-width: 70%;
+  padding-bottom: 5vh;
+}
+
+.spanSection3 {
+  color: #201915;
+  font-style: italic;
+  font-family: cursive;
+  width: 60%;
+}
+
+.section3p {
+  color: #5d4e45;
+  margin-top: 10vh;
+  margin: 0 3rem 0 3rem;
+  max-width: 70%;
+  letter-spacing: 0.1rem;
+  font-style: italic;
+  margin-bottom: 10vh;
+}
+
+.carla {
+  display: flex;
+  max-width: 100%;
+  @media screen and (min-width: 860px) {
+    max-width: 55%;
+  }
+}
+
+.section3Right {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10vh;
+  @media screen and (min-width: 860px) {
+    margin-top: 0;
+  }
+}
+
+/* footer */
+
+footer {
+  background: #201915;
+  color: #f7f4ee;
+}
+
+.divfooter {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10vh;
+  @media screen and (min-width: 860px) {
+    flex-direction: row;
+    gap: 0;
+    justify-content: space-between;
+  }
+  margin: 0 6rem 0 6rem;
+  padding-top: 10vh;
+  font-size: 2rem;
+  padding-bottom: 10vh;
+}
+
+.servicofooter {
+  color: #fff;
+  margin-top: 5vh;
+  font-size: small;
+}
+
+.divFooterLeft {
+  max-width: 70%;
+}
+
+.divfooterRight {
+  display: flex;
+}
+
+.agendarfooter {
+  color: #f7f4ee;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  font-size: small;
+}
+
+.whatsappFooter {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  transition: transform 0.3s ease;
+}
+
+.whatsappFooter:hover {
+  transform: scale(1.02);
+}
+
+.setaDireitaFooter {
+  color: #000;
+  background: #c39e89;
+  border: 1px solid;
+  border-radius: 50%;
+  width: 38px;
+  height: 38px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+}
+
+.footerFinal {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 6rem 0 6rem;
+  padding-top: 10vh;
+  border-top: 1px solid gray;
+  color: #796e68;
+  font-size: small;
+  padding-bottom: 5vh;
+}
